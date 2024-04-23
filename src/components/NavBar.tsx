@@ -23,7 +23,7 @@ export default function NavBar() {
                     </Nav>
                 </Navbar.Collapse>
                 <Nav className="justify-content-end">
-                        <Nav.Link as={Link} href="/logout" active={pathname === "/logout"}>Sair</Nav.Link>
+                        <Nav.Link as={Link} href="/" active={pathname === "/logout"}>Sair</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

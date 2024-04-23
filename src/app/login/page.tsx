@@ -17,19 +17,19 @@ export default function Login() {
   //   router.push('/productList');
   // };
   async function handleLogin(event: SyntheticEvent) {
-    event.preventDefault()
+    console.log("Autenticação não funciona")
+    // event.preventDefault()
+    // const result = await signIn('credentials', {
+    //   name,
+    //   password,
+    //   redirect: true
+    // })
 
-    const result = await signIn('credentials', {
-      name,
-      password,
-      redirect: false
-    })
-
-    if (result?.error) {
-      console.log(result)
-      return
-    }
-    console.log(result);
+    // if (result?.error) {
+    //   console.log(result)
+    //   return
+    // }
+    // console.log(result);
   }
 
   return (
@@ -53,9 +53,11 @@ export default function Login() {
                 <input type="passwordword" className="form-control" placeholder="password" onChange={(e) => (password.current = e.target.value)}/>
               </div>
               
-              <button type="submit" className="btn btn-black mt-3">Login</button>
-              {/* <button type="button" className="btn btn-black mt-3" onClick={() => name.current}>Login</button> */}
-
+              {/* <button type="submit" className="btn btn-black mt-3">Login</button> */}
+              
+              <Link href="/productList">
+                <button type="submit" className="btn btn-black mt-3">Login</button>
+              </Link>
 
               <Link href="/signup">
                 <button type="button" className="btn btn-secondary mt-3">Registre-se</button>
