@@ -1,3 +1,3 @@
 "use client";
 
-export { Container, SSRProvider } from "react-bootstrap";
+export { Container } from "react-bootstrap";

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
-import { Container, SSRProvider } from '@/components/bootstrap';
+import { Container } from '@/components/bootstrap';
+import Providers from "./Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SSRProvider>
-          <main>
-            <Container>
-              {children}
-            </Container>
-          </main>
-        </SSRProvider>
+        <Providers>
+        <main>
+          <Container>
+            {children}
+          </Container>
+        </main>
+        </Providers>
       </body>
     </html>
   );

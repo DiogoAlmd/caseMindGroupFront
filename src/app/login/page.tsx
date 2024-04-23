@@ -3,14 +3,34 @@
 import "./page.css";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { signIn, signOut, useSession } from "next-auth/react";
+import React, { SyntheticEvent, useRef } from "react";
 
 export default function Login() {
+  const name = useRef("");
+  const password = useRef("");
+  const { data: session } = useSession();
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    router.push('/productList');
-  };
+  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   router.push('/productList');
+  // };
+  async function handleLogin(event: SyntheticEvent) {
+    event.preventDefault()
+
+    const result = await signIn('credentials', {
+      name,
+      password,
+      redirect: false
+    })
+
+    if (result?.error) {
+      console.log(result)
+      return
+    }
+    console.log(result);
+  }
 
   return (
     <main>
@@ -26,13 +46,17 @@ export default function Login() {
             <form onSubmit={handleLogin}>
               <div className="form-group">
                 <label>User Name</label>
-                <input type="text" className="form-control" placeholder="User Name"/>
+                <input type="text" className="form-control" placeholder="User Name" onChange={(e) => (name.current = e.target.value)}/>
               </div>
               <div className="form-group">
-                <label>Password</label>
-                <input type="password" className="form-control" placeholder="Password"/>
+                <label>passwordword</label>
+                <input type="passwordword" className="form-control" placeholder="password" onChange={(e) => (password.current = e.target.value)}/>
               </div>
+              
               <button type="submit" className="btn btn-black mt-3">Login</button>
+              {/* <button type="button" className="btn btn-black mt-3" onClick={() => name.current}>Login</button> */}
+
+
               <Link href="/signup">
                 <button type="button" className="btn btn-secondary mt-3">Registre-se</button>
               </Link>

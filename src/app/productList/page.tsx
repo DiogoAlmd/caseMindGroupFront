@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import NavBar from '@/components/NavBar';
+import { useSession } from "next-auth/react";
 
 // Interface para os dados básicos do produto
 interface BasicProductData {
@@ -26,6 +27,8 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  
+  console.log(useSession());
 
   const [dummyProducts, setDummyProducts] = useState<BasicProductData[]>([
     { id: 1, imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(17).webp", name: 'Produto 1', description: "teste", value: 10 },
