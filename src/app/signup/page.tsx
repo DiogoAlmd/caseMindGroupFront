@@ -14,7 +14,7 @@ export default function Signup() {
     confirmPassword: ''
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -22,7 +22,7 @@ export default function Signup() {
     });
   };
 
-  const handleSignup = async (e) => {
+  const handleSignup = async (e: any) => {
     e.preventDefault();
     // Realizar a validação da senha
     if (formData.password !== formData.confirmPassword) {
@@ -46,7 +46,7 @@ export default function Signup() {
         const errorData = await response.json();
         alert('Erro ao criar conta: ' + errorData.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erro ao criar conta:', error.message);
       alert('Erro ao criar conta. Tente novamente mais tarde.');
     }
